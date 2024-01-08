@@ -17,7 +17,7 @@ export async function sql<O extends QueryResultRow>(
   const [query, params] = sqlTemplate(strings, ...values);
 
   // @ts-ignore
-  const res = await pool.query(query, params[0]);
+  const res = await pool.query(query, params);
 
   // @ts-ignore
   return res as unknown as Promise<QueryResult<O>>;
@@ -38,7 +38,7 @@ export function sqlTemplate(
   for (let i = 1; i < strings.length; i++) {
     result += `$${i}${strings[i] ?? ''}`;
   }
-
+  
   return [result, values];
 }
 
