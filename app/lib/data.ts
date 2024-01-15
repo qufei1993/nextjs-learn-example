@@ -1,6 +1,5 @@
 import { unstable_noStore as noStore } from 'next/cache';
-import { sql as vercelSql } from '@vercel/postgres';
-import { sql as pgLocalSql } from './pg-local';
+import { sql } from './sql-hack';
 import {
   CustomerField,
   CustomersTable,
@@ -11,8 +10,6 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
-
-const sql = process.env.LOCAL_VERCEL_POSTGRES ? pgLocalSql : vercelSql
 
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
