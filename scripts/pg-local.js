@@ -12,8 +12,8 @@ exports.getClient = async () => {
       if (!strings) {
          throw new ('sql is required')
       }
-      const [query, params] = sqlTemplate(strings, values)
-      const res = await client.query(query, params[0]);
+      const [query, params] = sqlTemplate(strings, ...values)
+      const res = await client.query(query, params);
       return res;
    }
 
