@@ -4,7 +4,7 @@ export const authConfig = {
   pages: {
     signIn: '/login',
   },
-  trustHost: true,
+  trustHost: false,
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
